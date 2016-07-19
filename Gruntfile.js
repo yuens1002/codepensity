@@ -440,6 +440,11 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'bower_components/font-awesome/fonts/*',
+          dest: '<%= yeoman.dist %>'
         }]
       },
       styles: {
@@ -447,12 +452,6 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      },
-      font_awesome: {
-        expand: true,
-        cwd: '.',
-        src: 'bower_components/font-awesome/fonts/*',
-        dest: '<%= yeoman.dist %>'
       }
     },
 
