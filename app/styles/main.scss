@@ -4,6 +4,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts/";
 // bootstrap variables
 @import "variables";
 
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "font-awesome/scss/font-awesome.scss";
@@ -11,5 +12,5 @@ $fa-font-path: "../bower_components/font-awesome/fonts/";
 
 
 // font import
-@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
-
+@import url(https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i);
+@import "theme";

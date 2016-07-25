@@ -1,23 +1,51 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('images/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Random Blog</h1>
+                        <hr class="small">
+                        <span class="subheading">Summary of the random blog would show up here</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+    <!-- Main Content -->
+    <div data-ng-if="posts" class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div>
+                  <ul class="list-inline">
+                    <li><strong>Categories:</strong></li>
+                    <li><span class="badge selected">All</span></li>
+                    <li data-ng-repeat="cat in categories.data.data.viewer.allCategorys.edges"><span class="badge">{{cat.node.name}}</span></li>
+                  </ul>
+                </div>
+                <hr>
+                <div data-ng-repeat="post in posts.data.data.viewer.allPosts.edges" class="post-preview">
+                    <a href="post.html">
+                        <h2 class="post-title">
+                            {{post.node.title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{post.node.summary}}
+                        </h3>
+                    </a>
+                  <p class="post-meta">Posted by <a href data-ng-href="#">{{post.node.author.username}}</a> on {{post.node.createdAt | date: 'MMMM dd, yyyy'}}</p>
+                </div>
+                <hr>
+                <!-- Pager -->
+                <ul data-ng-if="posts.data.data.viewer.allPosts.pageInfo.hasNextPage" class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
