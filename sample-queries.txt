@@ -1,0 +1,81 @@
+//create user
+
+mutation createUserQuery($input_0: _CreateUserInput!){
+  createUser(input: $input_0){ 
+    token
+  }
+}
+
+{
+    "input_0": {
+        "username": "sunny@gmail.com",
+        "password": "testpass"
+    }
+}
+		
+
+
+//create post
+
+mutation createPostQuery($input_0: _CreatePostInput!){
+  createPost(input: $input_0){ 
+    changedPost { 
+      id
+    }
+  }
+}
+
+{
+  "input_0": {
+    "title": "Nunc eget eros auctor",
+    "summary": "Nullam fermentum egestas bibendum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    "body": "Pellentesque aliquam, ipsum vitae dictum vulputate, sem est tincidunt elit, a fermentum quam orci ultricies mi. Ut ut porta dui. Donec dignissim molestie tristique. Nam sed pretium eros. Duis purus lorem, sodales sed commodo at, imperdiet vitae sapien. Aliquam ultricies et diam id imperdiet. Nam non gravida nulla, in mollis dui. Duis porta tempor erat non dignissim. Aliquam efficitur mauris ligula, ut feugiat leo pulvinar in.",
+    "likes": 0,
+    "keywords": ["maximus","auctor"],
+    "authorId": "NThjYzFiZDYtNjU0MS00NjJhLWI3YjEtZjA0ZTUzMGY5MjM3Ojg1YmQ3YzUwLTJjOWItNDExYS1iNjQ4LTQ0MDU0MjEzZjFjOA=="
+  }
+}
+
+//create category
+
+{
+  "input_0": {
+  	"name" : "Curabitur"
+  }
+}
+
+mutation createCategoryQuery($input_0: _CreateCategoryInput!){
+  createCategory(input: $input_0){ 
+    changedCategory { 
+      id
+      createdAt
+      modifiedAt
+      name
+    }
+  }
+}
+
+// add category to post 
+
+/**
+* Use this snippet with your AngularJS apps.
+* Version: ^1.5.8
+* Resource: https://docs.angularjs.org/api/ng/service/$http
+*/
+
+var data = {
+    query: 'mutation addCategoryToPostCategoriesQuery($input_0: _AddCategoryToPostCategoriesInput!){ addCategoryToPostCategories(input: $input_0){ changedPost { id createdAt modifiedAt title summary coverArt { name url mimeType }  } } } ',
+    variables: {"input_0": {"postId" : "OTk5Nzc0Y2MtMDgyNC00YjUwLWFkMzMtOWE0MjhiZDM4M2E4OmU3ZmZhMmFiLTJhM2MtNGNkNy1iMWMzLWU4MTQ5YjczYWIxYQ==","categoryId" : "MGIxMTY5MjAtNTcyOC00YWFiLTgwYzEtMTE1NDA1N2I2ZDFjOjJiN2JlM2M1LTY4ZTktNDI0Zi04OGI0LTJlMTFhNzAzMWVkMQ=="}}
+};
+
+$http.post("https://api.scaphold.io/graphql/d12f095f-3449-4ed3-ad85-7e71df01b81f", data, function(result) {
+    console.log("That was easy!");
+    console.log(result);
+})
+
+$http.post("https://api.scaphold.io/graphql/codepensity", data, function(result) {
+    console.log("That was easy!");
+    console.log(result);
+})
+
+
