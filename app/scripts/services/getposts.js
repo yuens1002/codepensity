@@ -8,11 +8,11 @@
  * Factory in the codepensityApp.
  */
 angular.module('codepensityApp')
-  .factory('getposts', function ($http) {
+  .factory('getposts', function ($http) {    
     
-var data = {
-    query: '{ viewer { allPosts { edges { cursor node { title summary createdAt author { username } } } pageInfo { count hasNextPage hasPreviousPage } } } } ',
-    variables: ''
+var
+  data = {
+    query: '{ viewer { allPosts { edges { cursor node { id title summary likes createdAt author { username } coverArt { url } } } pageInfo { count hasNextPage hasPreviousPage } } } }'
 };
 
 return $http.post("https://api.scaphold.io/graphql/codepensity", 

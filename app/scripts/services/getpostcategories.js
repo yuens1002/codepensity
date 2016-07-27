@@ -11,11 +11,10 @@ angular.module('codepensityApp')
   .factory('getpostcategories', function ($http) {
     
 var data = {
-    query: '{ viewer { allCategorys { edges { node { name } } } } } ',
-    variables: ""
+    query: '{ viewer { allCategorys { edges { node { name } } } } } '
 };
 
-return $http.post("https://api.scaphold.io/graphql/codepensity", 
+return $http.post('https://api.scaphold.io/graphql/codepensity', 
     data).then(function(result) {
         console.log("SUCCESS");
         console.log(result);
