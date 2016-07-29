@@ -8,6 +8,6 @@
  * Controller of the codepensityApp
  */
 angular.module('codepensityApp')
-  .controller('MainCtrl', function ($scope, getposts, getpostcategories) {
+  .controller('MainCtrl', function () {
       
 });

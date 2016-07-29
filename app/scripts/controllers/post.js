@@ -8,12 +8,10 @@
  * Controller of the codepensityApp
  */
 angular.module('codepensityApp')
-  .controller('PostCtrl', function ($scope, $routeParams, getposts) {
-      /*
-      $scope.postID = $routeParams.postID;
+  .controller('PostCtrl', function ($scope, $routeParams, getpost) {
   
-      getposts.data({
-          variables: '{' + 'id:' + $routeParams.postID + '}'
+  getpost.get($routeParams.postID).then(function(post) {
+      $scope.post = post;
+      console.log($scope.post);
       });
-    */
   });

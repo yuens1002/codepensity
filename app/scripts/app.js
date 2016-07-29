@@ -31,7 +31,7 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/post', {
+      .when('/post/:postID', {
         templateUrl: 'views/post.html',
         controller: 'PostCtrl',
         controllerAs: 'post'
