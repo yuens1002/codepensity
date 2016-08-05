@@ -17,9 +17,20 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'auth0',
+    'angular-storage',
+    'angular-jwt'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, authProvider) {
+  
+    authProvider
+      .init({
+      domain: 'codepensity.auth0.com',
+      clientID: 't35QGpPHzCk8WwqsxLgEFOrYccjRUwNG',
+      loginUrl: '/login'
+    });
+  
     $routeProvider
       .when('/', {
         templateUrl: 'views/blog.html',
@@ -36,9 +47,14 @@ angular
         controller: 'PostCtrl',
         controllerAs: 'post'
       })
+      .when('/userinfo', {
+        templateUrl: 'views/userinfo.html',
+        controller: 'UserinfoCtrl',
+        controllerAs: 'userinfo'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  }).run(function(){  
-  
-  });
+  }).run(function(auth) {
+    auth.hookEvents();
+});

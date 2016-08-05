@@ -24,5 +24,5 @@ return $http.post("https://api.scaphold.io/graphql/codepensity",
         console.log("ERROR");
         console.log(err);
         throw err;
-    })
+    });
 });

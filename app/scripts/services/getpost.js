@@ -26,7 +26,7 @@ angular.module('codepensityApp')
           console.log("ERROR");
           console.log(err);
           throw err;
-      })
+      });
 
   }
   
@@ -42,5 +42,5 @@ angular.module('codepensityApp')
     get: get,
     update: update,
     del: del
-  }
+  };
 });
