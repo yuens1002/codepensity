@@ -1,1 +1,30 @@
-<p>This is the userinfo view.</p>
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                      <p>
+                        Hello, 
+                      </p>  
+                      <h1>{{profile.data.data.loginUserWithAuth0Lock.user.username}}</h1>
+                        <h2 class="subheading">{{post.data.data.getPost.summary}}</h2>
+                        <span class="meta">Posted by <a href="#">{{post.data.data.getPost.author.username}}</a> on {{post.data.data.getPost.createdAt | date: 'MMMM dd, yyyy'}} <i class="fa fa-heart-o" aria-hidden="true"></i> {{post.data.data.getPost.likes}} <i class="fa fa-comment-o" aria-hidden="true"></i> {{post.data.data.getPost.comments.pageInfo.count}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>{{post.data.data.getPost.body}}</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    
