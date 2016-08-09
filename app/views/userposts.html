@@ -1,0 +1,50 @@
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                      <p>You have <span class="h1">{{posts.data.data.getUser.posts.pageInfo.count}}</span> posts</p>
+                       <a href data-ng-href="#/post/{{post.node.id}}"><button type="button" class="btn btn-primary">Add New</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- profile Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 
+                  <div>
+                     <ul class="list-inline h1">
+                        <li>  
+                          <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </li>
+                        
+                      </ul>
+                  </div>
+                
+                  <div data-ng-repeat="post in posts.data.data.getUser.posts.edges" class="post-preview">
+                   
+                        <h2 class="post-title">
+                          {{post.node.title}}
+                        </h2>
+                        <span class="post-subtitle">
+                          {{post.node.summary}} 
+                        </span><p>
+                        <a href data-ng-href="#/post/{{post.node.id}}"><button type="button" class="btn btn-default">Preview</button></a>
+                        <a href data-ng-href="#/editpost/{{post.node.id}}"><button type="button" class="btn btn-default">Edit</button></a>
+                        <a href data-ng-href="#/post/{{post.id}}"><button type="button" class="btn btn-default">Delete</button></a>
+                         
+                    
+                </div>
+            </div>
+        </div>
+    </article>

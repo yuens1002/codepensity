@@ -6,23 +6,51 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                       <p>
-                        Hello, 
+                        Hello
                       </p>  
                       <h1>{{profile.data.data.loginUserWithAuth0Lock.user.username}}</h1>
                         <h2 class="subheading">{{post.data.data.getPost.summary}}</h2>
-                        <span class="meta">Posted by <a href="#">{{post.data.data.getPost.author.username}}</a> on {{post.data.data.getPost.createdAt | date: 'MMMM dd, yyyy'}} <i class="fa fa-heart-o" aria-hidden="true"></i> {{post.data.data.getPost.likes}} <i class="fa fa-comment-o" aria-hidden="true"></i> {{post.data.data.getPost.comments.pageInfo.count}}</span>
+                        <span class="meta">Your Stats: 10 <i class="fa fa-heart-o" aria-hidden="true"></i> {{post.data.data.getPost.likes}} 25 <i class="fa fa-comment-o" aria-hidden="true"></i>  {{post.data.data.getPost.comments.pageInfo.count}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Post Content -->
+    <!-- profile Content -->
     <article>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p>{{post.data.data.getPost.body}}</p>
+                 
+                  <div>
+                     <ul class="list-inline h1">
+                        <li>  
+                          <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </li>
+                        
+                      </ul>
+                  </div>
+                
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                       {{profile.data.data.loginUserWithAuth0Lock.user.username}}
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        {{profile.data.data.loginUserWithAuth0Lock.firstName}}
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+                        {{profile.data.data.loginUserWithAuth0Lock.lastName}}
+                      </div>
+                    </div>
+                    <div class="text-right"><button type="button" class="btn btn-default">Update</button></div> 
                 </div>
             </div>
         </div>

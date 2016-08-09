@@ -8,8 +8,9 @@
  * Controller of the codepensityApp
  */
 
-angular.module('codepensityApp').controller('MainCtrl', function($scope, $location, auth, store) {
+angular.module('codepensityApp').controller('MainCtrl', function($scope, $location, auth, store, $route) {
   
+  $scope.$route = $route;
   
   $scope.signin = function() {
     auth.signin({
@@ -19,12 +20,12 @@ angular.module('codepensityApp').controller('MainCtrl', function($scope, $locati
     }, function(profile, idToken, accessToken, state, refreshToken) {
         store.set('profile', profile);
         store.set('id_token', idToken);
-        
+        console.log(auth.isAuthenticated);
+        $scope.status = auth.isAuthenticated; 
         $location.path('/userinfo');
-        $scope.login = function () {return false};
       
     }, function(err) {
-      console.log("Error :(", err);
+        console.log("Error :(", err);
     });
   }
   
@@ -32,8 +33,9 @@ angular.module('codepensityApp').controller('MainCtrl', function($scope, $locati
     store.remove('profile');
     store.remove('id_token');
     auth.signout();
+    $scope.status = auth.isAuthenticated;
     $location.path('/');
-    $scope.login = function () {return true};
+    
   }
   
 });

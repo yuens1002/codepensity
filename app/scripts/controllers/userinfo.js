@@ -10,9 +10,12 @@ angular.module('codepensityApp')
   var token = store.get('id_token');
   var profile = store.get('profile');
   
-  user.verify(token, profile)
+  user.get(token, profile)
       .then(function(result) {
+       // store.set('profile', result.user.id);
+       console.log()
        $scope.profile = result;
-       console.log($scope.profile);
+       
+       
       });
 });

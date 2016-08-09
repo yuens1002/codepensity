@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'auth0',
     'angular-storage',
-    'angular-jwt'
+    'angular-jwt',
+    'ngAutosize'
   ])
   .config(function ($routeProvider, authProvider) {
   
@@ -50,7 +51,19 @@ angular
       .when('/userinfo', {
         templateUrl: 'views/userinfo.html',
         controller: 'UserinfoCtrl',
-        controllerAs: 'userinfo'
+        controllerAs: 'userinfo',
+        activetab: 'profile'
+      })
+      .when('/userposts', {
+        templateUrl: 'views/userposts.html',
+        controller: 'UserpostsCtrl',
+        controllerAs: 'userposts',
+        activetab: 'post'
+      })
+      .when('/editpost/:postID', {
+        templateUrl: 'views/editpost.html',
+        controller: 'EditpostCtrl',
+        controllerAs: 'editpost'
       })
       .otherwise({
         redirectTo: '/'

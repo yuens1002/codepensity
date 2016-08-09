@@ -36,23 +36,19 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" ng-if="!status">
                     <li>
-                        <a href="#/">Home</a>
-                    </li>
-                    <li>
-                        <a data-ng-href="#/about">About</a>
-                    </li>
-                    <li>
-                        <a data-ng-href="#/post">Sample Post</a>
-                    </li>
-                    <li>
-                        <a href="#/contact">Contact</a>
-                    </li>
-                    <li ng-show="login()">
                         <a herf="" data-ng-click="signin()"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+                    </li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-if="status">
+                    <li ng-class="{selected: $route.current.activetab == 'profile'}">
+                        <a data-ng-href="#/userinfo">Profile</a>
                     </li>
-                    <li ng-hide="login()">
+                    <li ng-class="{selected: $route.current.activetab == 'post'}">
+                        <a data-ng-href="#/userposts">Posts</a>
+                    </li>
+                    <li>
                         <a herf="" data-ng-click="signout()"><i class="fa fa-user" aria-hidden="true"></i> Sign Out</a>
                     </li>
                 </ul>
@@ -89,7 +85,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="" ng-href="https://github.com/yuens1002/codepensity" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -149,8 +145,11 @@
         <script src="scripts/controllers/blog.js"></script>
         <script src="scripts/controllers/userinfo.js"></script>
         <script src="scripts/services/user.js"></script>
+        <script src="scripts/controllers/userposts.js"></script>
+        <script src="scripts/controllers/editpost.js"></script>
         <!-- endbuild -->
     
     <script src="js/clean-blog.min.js"></script>
+    <script src="bower_components/ng-autosize/ng-autosize.js"></script>
 </body>
 </html>
