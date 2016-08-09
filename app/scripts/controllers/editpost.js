@@ -9,7 +9,7 @@
  */
 angular.module('codepensityApp')
   .controller('EditpostCtrl', function ($scope, $routeParams, getpost, $location) {
-    
+  
     getpost.get($routeParams.postID).then(function(post) {
       $scope.post = post;
       $scope.title = post.data.data.getPost.title;

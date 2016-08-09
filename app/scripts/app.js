@@ -46,7 +46,8 @@ angular
       .when('/post/:postID', {
         templateUrl: 'views/post.html',
         controller: 'PostCtrl',
-        controllerAs: 'post'
+        controllerAs: 'post',
+        activetab: 'post'
       })
       .when('/userinfo', {
         templateUrl: 'views/userinfo.html',
@@ -63,7 +64,8 @@ angular
       .when('/editpost/:postID', {
         templateUrl: 'views/editpost.html',
         controller: 'EditpostCtrl',
-        controllerAs: 'editpost'
+        controllerAs: 'editpost',
+        activetab: 'post'
       })
       .otherwise({
         redirectTo: '/'
