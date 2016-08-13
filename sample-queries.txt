@@ -78,4 +78,53 @@ $http.post("https://api.scaphold.io/graphql/codepensity", data, function(result)
     console.log(result);
 })
 
+mutation createPostQuery($input_0: _CreatePostInput!){
+  createPost(input: $input_0){ 
+    changedPost { 
+      id
+      createdAt
+      modifiedAt
+      title
+      summary
+      coverArt { 
+        name
+        url
+        mimeType 
+      }
+      body
+      likes
+      keywords
+      author { 
+        id
+        }
+      }
+      categories { 
+        edges { 
+          node { 
+            id
+            createdAt
+            modifiedAt
+            name
+            posts { 
+              edges { 
+                cursor 
+              }
+              pageInfo { 
+                hasPreviousPage
+                hasNextPage
+                count 
+              } 
+            } 
+          }
+          cursor 
+        }
+        pageInfo { 
+          hasPreviousPage
+          hasNextPage
+          count 
+        } 
+      }
+  }
+}
+
 
