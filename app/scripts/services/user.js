@@ -18,11 +18,19 @@ angular.module('codepensityApp')
     variables: {"input_0": {"token" : idToken, "identity" : profile.identities[0]}}
   };
     
+    var options = {};
+    if (store.get('idToken')) {
+      options.headers = {
+        Authorization: "Bearer " + store.get('idToken')
+      }
+    }
+    
     return $http.post("https://api.scaphold.io/graphql/codepensity", 
-      data).then(function(result) {
+      data, options).then(function(result) {
           console.log("SUCCESS");
           console.log(result);
           store.set('userID', result.data.data.loginUserWithAuth0Lock.user.id);
+          store.set('idToken', result.data.data.loginUserWithAuth0Lock.id_token);
           return result;
       }).catch(function(err) {
           console.log("ERROR");
@@ -49,6 +57,8 @@ angular.module('codepensityApp')
           throw err;
       });
   }
+  
+  
   
   return {
     get: get,

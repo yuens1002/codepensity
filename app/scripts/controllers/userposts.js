@@ -8,10 +8,11 @@
  * Controller of the codepensityApp
  */
 angular.module('codepensityApp')
-  .controller('UserpostsCtrl', function ($scope, user, store) {
+  .controller('UserpostsCtrl', function ($scope, user, store) {                          
+  
     user.posts(store.get('userID'))
       .then(function(result) {
        console.log(result);
        $scope.posts = result;
-       })
+       });
 });

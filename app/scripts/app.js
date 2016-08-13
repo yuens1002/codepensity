@@ -22,6 +22,7 @@ angular
     'angular-storage',
     'angular-jwt',
     'ngAutosize'
+    
   ])
   .config(function ($routeProvider, authProvider) {
   
@@ -66,6 +67,11 @@ angular
         controller: 'EditpostCtrl',
         controllerAs: 'editpost',
         activetab: 'post'
+      })
+      .when('/addpost', {
+        templateUrl: 'views/addpost.html',
+        controller: 'AddpostCtrl',
+        controllerAs: 'addpost'
       })
       .otherwise({
         redirectTo: '/'

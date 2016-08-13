@@ -30,8 +30,22 @@ angular.module('codepensityApp')
 
   }
   
-  function user(id) {
-    //..
+  function add(post) {
+    var data = {
+      query: 'mutation createPostQuery($input_0: _CreatePostInput!){ createPost(input: $input_0){ changedPost { id createdAt modifiedAt title summary coverArt { name url mimeType } body likes keywords author { id username roles { role userId isAdmin } createdAt modifiedAt lastLogin lastName avatar { name url mimeType } } } } } ',
+    variables: {"input_0": {"title": post.title,"summary": post.summary,"body": post.body,"likes": 0,"keywords": post.keywords,"authorId": post.userID,"coverArt": {"url": post.coverArt.url}}
+  }};
+    
+    return $http.post("https://api.scaphold.io/graphql/codepensity", 
+      data).then(function(result) {
+          console.log("SUCCESS");
+          console.log(result);
+          return result;
+      }).catch(function(err) {
+          console.log("ERROR");
+          console.log(err);
+          throw err;
+      });
   }
   
   function update(post) {
@@ -59,7 +73,7 @@ angular.module('codepensityApp')
   
   return {
     get: get,
-    user: user,
+    add: add,
     update: update,
     del: del
   };

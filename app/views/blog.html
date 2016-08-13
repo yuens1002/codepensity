@@ -20,7 +20,7 @@
                 <div>
                   <ul class="list-inline">
                     <li><strong>Categories:</strong></li>
-                    <li><span class="badge selected">All</span></li>
+                    <li><span class="badge">All</span></li>
                     <li data-ng-repeat="cat in categories.data.data.viewer.allCategorys.edges"><span class="badge">{{cat.node.name}}</span></li>
                   </ul>
                 </div>
@@ -36,13 +36,19 @@
                     </a>
                   <p class="post-meta">Posted by <a href data-ng-href="#">{{post.node.author.username}}</a> on {{post.node.createdAt | date: 'MMMM dd, yyyy'}}</p>
                 </div>
-                <hr>
+               
                 <!-- Pager -->
-                <ul data-ng-if="posts.data.data.viewer.allPosts.pageInfo.hasNextPage" class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
+                <div>
+                  <ul class="pager">
+                      <li data-ng-if="posts.data.data.viewer.allPosts.pageInfo.hasPreviousPage" class="previous">
+                          <a href="" data-ng-click="prevPosts(posts.data.data.viewer.allPosts.edges[0].cursor)"><span aria-hidden="true">&larr;</span> Newer Posts</a>
+                      </li>
+                      <li data-ng-if="posts.data.data.viewer.allPosts.pageInfo.hasNextPage" class="next">
+                          <a href="" data-ng-click="nextPosts(posts.data.data.viewer.allPosts.edges[posts.data.data.viewer.allPosts.edges.length-1].cursor)">Older Posts <span aria-hidden="true">&rarr;</span></a>
+                      </li>
+                  </ul>
+                </div>
+                <div><p></p></div> 
             </div>
         </div>
     </div>

@@ -18,6 +18,12 @@ angular.module('codepensityApp').controller('MainCtrl', function($scope, $locati
         scope: 'openid name email' // Specify the scopes you want to retrieve
       }
     }, function(profile, idToken, accessToken, state, refreshToken) {
+      
+        console.log("PROFILE");
+        console.log(profile);
+        console.log("IDTOKEN");
+        console.log(idToken);
+      
         store.set('profile', profile);
         store.set('id_token', idToken);
         console.log(auth.isAuthenticated);
