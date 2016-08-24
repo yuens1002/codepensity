@@ -31,7 +31,7 @@ angular.module('codepensityApp')
   function next(cursor) {
   
     var data = {
-        query: '{ viewer { allPosts (last: 10, after: "' + cursor + '") { edges { cursor node { id title summary likes createdAt author { username firstName } coverArt { url } } } pageInfo { count hasNextPage hasPreviousPage } } } }'
+        query: '{ viewer { allPosts (last: 10, after: "' + cursor + '") { edges { cursor node { id title summary likes createdAt author { username firstName } } } pageInfo { count hasNextPage hasPreviousPage } } } }'
     };
 
     return $http.post("https://api.scaphold.io/graphql/codepensity", 
@@ -50,7 +50,7 @@ angular.module('codepensityApp')
   function prev(cursor) {
   
     var data = {
-        query: '{ viewer { allPosts (last: 10, before:"' + cursor + '") { edges { cursor node { id title summary likes createdAt author { username firstName } coverArt { url } } } pageInfo { count hasNextPage hasPreviousPage } } } }'
+        query: '{ viewer { allPosts (last: 10, before:"' + cursor + '") { edges { cursor node { id title summary likes createdAt author { username firstName } } } pageInfo { count hasNextPage hasPreviousPage } } } }'
     };
 
     return $http.post("https://api.scaphold.io/graphql/codepensity", 
