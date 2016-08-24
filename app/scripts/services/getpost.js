@@ -12,7 +12,7 @@ angular.module('codepensityApp')
   
   function get(id) {
       var data = {
-      query: 'query getPostQuery($id_0: ID!){ getPost(id: $id_0){ comments { pageInfo { count } edges { node { modifiedAt body author { username avatar { url } } } } } createdAt modifiedAt title summary coverArt { name url mimeType } body likes keywords author { id username avatar { name url mimeType } } } }',
+      query: 'query getPostQuery($id_0: ID!){ getPost(id: $id_0){ id comments { pageInfo { count } edges { node { modifiedAt body author { username firstName avatar { url } } } } } createdAt modifiedAt title summary body likes keywords author { id username firstName avatar { name url mimeType } } } }',
       variables: {"id_0": id}
 
   };
@@ -32,8 +32,8 @@ angular.module('codepensityApp')
   
   function add(post) {
     var data = {
-      query: 'mutation createPostQuery($input_0: _CreatePostInput!){ createPost(input: $input_0){ changedPost { id createdAt modifiedAt title summary coverArt { name url mimeType } body likes keywords author { id username roles { role userId isAdmin } createdAt modifiedAt lastLogin lastName avatar { name url mimeType } } } } } ',
-    variables: {"input_0": {"title": post.title,"summary": post.summary,"body": post.body,"likes": 0,"keywords": post.keywords,"authorId": post.userID,"coverArt": {"url": post.coverArt.url}}
+      query: 'mutation createPostQuery($input_0: _CreatePostInput!){ createPost(input: $input_0){ changedPost { id createdAt modifiedAt title summary body likes keywords author { id username roles { role userId isAdmin } createdAt modifiedAt lastLogin lastName avatar { name url mimeType } } } } } ',
+    variables: {"input_0": {"title":post.title,"summary":post.summary,"body":post.body,"likes":0,"keywords":post.keywords,"authorId":post.author}
   }};
     
     return $http.post("https://api.scaphold.io/graphql/codepensity", 
@@ -41,6 +41,7 @@ angular.module('codepensityApp')
           console.log("SUCCESS");
           console.log(result);
           return result;
+
       }).catch(function(err) {
           console.log("ERROR");
           console.log(err);
@@ -50,9 +51,9 @@ angular.module('codepensityApp')
   
   function update(post) {
     var data = {
-    query: 'mutation updatePostQuery($input_0: _UpdatePostInput!){ updatePost(input: $input_0){ changedPost { id createdAt modifiedAt title summary coverArt { name url mimeType } body keywords } } } ',
+    query: 'mutation updatePostQuery($input_0: _UpdatePostInput!){ updatePost(input: $input_0){ changedPost { id createdAt modifiedAt title summary body keywords } } } ',
     variables: {"input_0": {"id" : post.id, "title" : post.title, "body" : post.body, "summary" : post.summary}}
-};
+    };
 
   return $http.post("https://api.scaphold.io/graphql/codepensity", 
       data).then(function(result) {
@@ -67,14 +68,29 @@ angular.module('codepensityApp')
 
   }
   
-  function del() {
-    // ...
+  function comment(comment) {
+    var data = {
+    query: 'mutation createCommentQuery($input_0: _CreateCommentInput!){ createComment(input: $input_0){ changedComment { id } } } ',
+    variables: {"input_0": {"postId" : comment.post,"body": comment.body,"authorId": comment.author}}
+    };
+    
+    return $http.post("https://api.scaphold.io/graphql/codepensity", 
+      data).then(function(result) {
+          console.log("SUCCESS");
+          console.log(result);
+          return result;
+      }).catch(function(err) {
+          console.log("ERROR");
+          console.log(err);
+          throw err;
+      });
+
   }
   
   return {
     get: get,
     add: add,
     update: update,
-    del: del
+    comment: comment
   };
 });

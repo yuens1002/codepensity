@@ -7,7 +7,7 @@
                     <div class="post-heading">
                         <h1>{{post.data.data.getPost.title}}</h1>
                         <h2 class="subheading">{{post.data.data.getPost.summary}}</h2>
-                        <span class="meta">Posted by <a href="#">{{post.data.data.getPost.author.username}}</a> on {{post.data.data.getPost.createdAt | date: 'MMMM dd, yyyy'}} <i class="fa fa-heart-o" aria-hidden="true"></i> {{post.data.data.getPost.likes}} <i class="fa fa-comment-o" aria-hidden="true"></i> {{post.data.data.getPost.comments.pageInfo.count}}</span>
+                        <span class="meta">Posted by <a href="#">{{post.data.data.getPost.author.firstName}}</a> on {{post.data.data.getPost.createdAt | date: 'MMMM dd, yyyy'}} <i class="fa fa-heart-o" aria-hidden="true"></i> {{post.data.data.getPost.likes}} <i class="fa fa-comment-o" aria-hidden="true"></i> {{post.data.data.getPost.comments.pageInfo.count}}</span>
                     </div>
                 </div>
             </div>
@@ -19,11 +19,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p>{{post.data.data.getPost.body}}</p>
+                    <p class="small text-muted">Keywords: {{post.data.data.getPost.keywords}}</p>
+                    <p>{{post.data.data.getPost.body}}</p>   
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <label for="body">Write A Comment</label>
+                    <textarea class="form-control" rows="10" id="body" data-ng-model="comment" data-ng-autosize></textarea>
+                    <div class="text-right"><br><a href data-ng-click="publish(post.data.data.getPost.id)" class="btn btn-default">Publish</a></div>
                 </div>
             </div>
         </div>
     </article>
+
+    
+
     <article data-ng-if="post.data.data.getPost.comments.pageInfo.count>0">
         <div class="container">
             <div class="row">
@@ -32,7 +41,7 @@
                     <div data-ng-repeat="comment in post.data.data.getPost.comments.edges">
                     
                   
-                    <p class="text-muted small">by {{comment.node.author.username}} on {{comment.node.modifiedAt | date: 'MMMM dd, yyyy'}}</p>
+                    <p class="text-muted small">by {{comment.node.author.firstName}} on {{comment.node.modifiedAt | date: 'MMMM dd, yyyy'}}</p>
                     <p>{{comment.node.body}}</p>
                     </div>
                 </div>

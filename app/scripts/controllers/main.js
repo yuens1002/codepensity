@@ -26,7 +26,9 @@ angular.module('codepensityApp').controller('MainCtrl', function($scope, $locati
       
         store.set('profile', profile);
         store.set('id_token', idToken);
-        console.log(auth.isAuthenticated);
+        store.set('email', profile.email);
+        store.set('nickname', profile.nickname);
+        store.set('picture', profile.picture);
         $scope.status = auth.isAuthenticated; 
         $location.path('/userinfo');
       

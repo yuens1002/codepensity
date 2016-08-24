@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                      <p>You have <span class="h1">{{posts.data.data.getUser.posts.pageInfo.count}}</span> posts</p>
+                      <p>You have <span class="h1">{{posts.data.data.getUser.posts.pageInfo.count}}</span> post<span data-ng-if="posts.data.data.getUser.posts.pageInfo.count>1">s</span></p>
                        <a href data-ng-href="#/addpost"><button type="button" class="btn btn-primary">Add New</button></a>
                     </div>
                 </div>
@@ -39,10 +39,9 @@
                         <span class="post-subtitle">
                           {{post.node.summary}} 
                         </span><p>
-                        <a href data-ng-href="#/post/{{post.node.id}}"><button type="button" class="btn btn-default">Preview</button></a>
-                        <a href data-ng-href="#/editpost/{{post.node.id}}"><button type="button" class="btn btn-default">Edit</button></a>
-                        <a href data-ng-href="#/post/{{post.node.id}}"><button type="button" class="btn btn-default">Delete</button></a>
-                         
+                        <a href data-ng-href="#/post/{{post.node.id}}"><button type="button" class="btn btn-default">PREVIEW</button></a>
+                        <a href data-ng-href="#/editpost/{{post.node.id}}"><button type="button" class="btn btn-default">EDIT</button></a>
+                        <a href data-ng-click="del(post.node.id)" class="btn btn-default">DELETE</a>    
                     
                 </div>
             </div>

@@ -6,11 +6,12 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                       <p>
-                        Hello
-                      </p>  
-                      <h1>{{profile.data.data.loginUserWithAuth0Lock.user.username}}</h1>
-                        <h2 class="subheading">{{post.data.data.getPost.summary}}</h2>
-                        <span class="meta">Your Stats: 10 <i class="fa fa-heart-o" aria-hidden="true"></i> {{post.data.data.getPost.likes}} 25 <i class="fa fa-comment-o" aria-hidden="true"></i>  {{post.data.data.getPost.comments.pageInfo.count}}</span>
+                        Hello,
+                      </p>
+                      <h1 data-ng-if="!profile.data.data.getUser.firstName">Thanks for Signing Up!</h1>
+                      <span data-ng-if="!profile.data.data.getUser.firstName" class="meta">your name is blink, you can update your name below</span>
+                      <h1 data-ng-if="profile.data.data.getUser.firstName">{{firstname}} {{lastname}}</h1>
+                      <span data-ng-if="profile.data.data.getUser.firstName" class="meta">Welcome Back, You Last Visited On {{profile.data.data.getUser.lastLogin | date: 'MMMM dd, yyyy'}}</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +23,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                 
                   <div>
                      <ul class="list-inline h1">
                         <li>  
@@ -34,23 +34,27 @@
                         
                       </ul>
                   </div>
-                
-                  <div class="panel panel-default">
-                      <div class="panel-body">
-                       {{profile.data.data.loginUserWithAuth0Lock.user.username}}
-                      </div>
+                  <div class="form-group">
                     </div>
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        {{profile.data.data.loginUserWithAuth0Lock.firstName}}
-                      </div>
+                    <div class="form-group post-heading">
+                      <label for="first name" class="post-heading">First Name</label>
+                      <input type="text" class="form-control" data-ng-model="firstname">
                     </div>
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        {{profile.data.data.loginUserWithAuth0Lock.lastName}}
-                      </div>
+                    <div class="form-group post-heading">
+                      <label for="last name" class="post-heading">Last Name</label>
+                      <input type="text" class="form-control" id="lastname" data-ng-model="lastname">
                     </div>
-                    <div class="text-right"><button type="button" class="btn btn-default">Update</button></div> 
+                    <div class="form-group">
+                      <label for="upload a file">Upload an Image</label>
+                      <input type="file" id="fileURL" data-ng-model="avatarURL">
+                      <p class="small help-block">jpg, png, pdf, and gif formats are supported</p>
+                    </div>
+                    <div class="text-right">
+                      <a href="" data-ng-click="edit(profile.data.data.getUser.id)" class="btn btn-default">UPDATE</a>
+                    </div>
+                 </div>
+                  
+                    
                 </div>
             </div>
         </div>

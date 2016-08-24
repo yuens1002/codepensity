@@ -5,9 +5,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Random Blog</h1>
+                        <h1>Coder's Blog</h1>
                         <hr class="small">
-                        <span class="subheading">Summary of the random blog would show up here</span>
+                        <span class="subheading">Thoughts, Ideas, Discussions</span>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                             {{post.node.summary}}
                         </h3>
                     </a>
-                  <p class="post-meta">Posted by <a href data-ng-href="#">{{post.node.author.username}}</a> on {{post.node.createdAt | date: 'MMMM dd, yyyy'}}</p>
+                  <p class="post-meta">Posted by <a href data-ng-href="#">{{post.node.author.firstName}}</a> on {{post.node.createdAt | date: 'MMMM dd, yyyy'}}</p>
                 </div>
                
                 <!-- Pager -->

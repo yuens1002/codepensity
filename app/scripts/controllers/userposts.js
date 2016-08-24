@@ -15,4 +15,8 @@ angular.module('codepensityApp')
        console.log(result);
        $scope.posts = result;
        });
+    
+   $scope.del = function (post) {
+     user.del(post);
+   }; 
 });
