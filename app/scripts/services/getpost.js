@@ -8,7 +8,7 @@
  * Factory in the codepensityApp.
  */
 angular.module('codepensityApp')
-  .factory('getpost', function ($http) {
+  .factory('getpost', function ($http, $location) {
   
   function get(id) {
       var data = {
@@ -59,15 +59,15 @@ angular.module('codepensityApp')
       data).then(function(result) {
           console.log("SUCCESS");
           console.log(result);
-          return result;
-      }).catch(function(err) {
+          $location.path("/post/" + result.data.data.updatePost.changedPost.id);
+      }).catch(function(err)  {
           console.log("ERROR");
           console.log(err);
           throw err;
       });
 
   }
-  
+           
   function comment(comment) {
     var data = {
     query: 'mutation createCommentQuery($input_0: _CreateCommentInput!){ createComment(input: $input_0){ changedComment { id } } } ',

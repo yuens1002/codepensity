@@ -23,10 +23,10 @@ angular.module('codepensityApp')
       options.headers = {
         Authorization: "Bearer " + store.get('idToken')
       }
-    } 
+    }
   
     return $http.post("https://api.scaphold.io/graphql/codepensity", 
-      data, options).then(function(result) {
+      data).then(function(result) {
           console.log("SUCCESS");
           console.log(result);
           store.set('userID', result.data.data.loginUserWithAuth0Lock.user.id);
